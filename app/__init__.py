@@ -5,8 +5,12 @@ def create_app():
 
     # Import routes
     from .routes.home import home
+    from .routes.embedding import embedding
+    from .routes.query import query
 
     # Register routes
     app.register_blueprint(home)
+    app.register_blueprint(embedding)
+    app.register_blueprint(query)
 
     return app

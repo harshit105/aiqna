@@ -12,7 +12,7 @@ function handleFileUpload() {
         const file = fileInput.files[0];
         const formData = new FormData();
         formData.append('file', file);
-        fetch('/upload', {
+        fetch('/create-embedding', {
             method: 'POST',
             body: formData,
         })
