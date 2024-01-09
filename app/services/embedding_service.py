@@ -7,8 +7,10 @@ import os
 import uuid
 from app.services import *
 
-class EmbeddingService:
+seen_ids = set()
 
+class EmbeddingService:
+    
     def createEmbeddings(self,files):
         if 'file' not in files:
             return Custom.jsonRes('No file part in the request',400)
@@ -34,13 +36,12 @@ class EmbeddingService:
         # Create a list of unique ids for each document based on the content
         ids = [str(uuid.uuid5(uuid.NAMESPACE_DNS, doc.page_content)) for doc in documents]
         unique_ids = list(set(ids))
-        print(f"unique_id 0 : {unique_ids[0]}")
-
+        
         # Ensure that only docs that correspond to unique ids are kept and that only one of the duplicate ids is kept
-        seen_ids = set()
         unique_docs = [doc for doc, id in zip(documents, ids) if id not in seen_ids and (seen_ids.add(id) or True)]      
 
-        vectorstore = Chroma.from_documents(documents=unique_docs, ids=unique_ids, embedding=embeddings, persist_directory=VECTOR_STORE)
+        if(len(unique_docs)>0):
+            vectorstore = Chroma.from_documents(documents=unique_docs, ids=unique_ids, embedding=embeddings, persist_directory=VECTOR_STORE)
         
         # Once vector embedding is created remove file from local
         os.remove(filepath)

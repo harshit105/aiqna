@@ -161,3 +161,7 @@ cython_debug/
 
 
 env.sh
+
+/app/meta/
+
+*.sqlite3
