@@ -6,8 +6,8 @@ embeddingService = EmbeddingService()
 
 @embedding.route('/create-embedding', methods=['POST'])
 def index():
-    files = request.files
-    return embeddingService.createEmbeddings(files=files)
+    uploaded_files = request.files.getlist("files[]")
+    return embeddingService.createEmbeddings(uploaded_files=uploaded_files)
 
 
     

@@ -163,5 +163,7 @@ cython_debug/
 env.sh
 
 /app/meta/
+/app/meta/chromadb
+/app/meta/uploads
 
 *.sqlite3

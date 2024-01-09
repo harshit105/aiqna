@@ -8,19 +8,18 @@
 </head>
 <body>
     <header>
-        <h1>My Search Engine</h1>
+        <h1>AI-QNA</h1>
     </header>
     <main>
-        <div>
-            <input type="file" name="file" id="fileInput"/>
-            <button id="uploadButton">upload</button>
-        </div>
-        <div class="search-container">
-            <input type="text" id="search-input" placeholder="Enter your search query...">
-            <button id="search-button">Search</button>
-        </div>
-        <div id="results">
-            
+        <div class="chat-window">
+            <div class="chat-content" id="chatContent">
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chatInput" placeholder="Ask a question...">
+                <input type="file" name="file" id="fileInput" multiple style="display:none;"> <!-- Hidden file input -->
+                <button id="uploadButton" onclick="document.getElementById('fileInput').click();">Upload</button>
+                <button id="sendButton">Send</button>
+            </div>
         </div>
     </main>
     <script src="../static/js/script.js"></script>

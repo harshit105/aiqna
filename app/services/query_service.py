@@ -6,7 +6,7 @@ from app.services import *
 
 class QueryService:
     def runQuery(self, query):
-        llm = OpenAI(openai_api_key = OPENAI_API_KEY, temperature = 0.1, max_tokens=1000)
+        llm = OpenAI(openai_api_key = OPENAI_API_KEY, temperature = 0.5, max_tokens=1000)
         docsearch = Chroma(persist_directory=VECTOR_STORE, embedding_function=embeddings)
         qa = RetrievalQA.from_chain_type(llm=llm, 
                                  chain_type="stuff",
