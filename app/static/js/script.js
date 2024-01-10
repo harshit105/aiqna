@@ -47,7 +47,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const chatInput = document.getElementById('chatInput');
     const chatContent = document.getElementById('chatContent');
 
-    sendButton.addEventListener('click', function() {
+    chatInput.addEventListener('keydown', function(event){
+        if(event.key=='Enter'){
+            event.preventDefault();
+            askQuestion();
+        }
+    })
+
+    sendButton.addEventListener('click', ()=>{
+        askQuestion();
+    });
+
+    function askQuestion(){
         const query = chatInput.value.trim();
         if (query === '') {
             alert('Please enter a query.');
@@ -93,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         chatInput.value = '';
-    });
+    }
 
     function addMessageToChat(className, text) {
         const messageDiv = document.createElement('div');
