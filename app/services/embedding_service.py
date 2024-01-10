@@ -16,7 +16,7 @@ class EmbeddingService:
         for file in uploaded_files:
             print(file.content_type)
             if file.filename == '':
-                return Custom.jsonRes('No file selected for uploading',400)
+                return Custom.jsonRes(status=400,message='No file selected for uploading')
             
             # save file locally
             filepath = os.path.join(UPLOAD_FOLDER, file.filename)
@@ -58,9 +58,9 @@ class EmbeddingService:
                     Chroma.from_documents(documents=unique_docs, ids=unique_ids, embedding=embeddings, persist_directory=VECTOR_STORE)
             
             else:
-                return Custom.jsonRes('Unsuported file type',400)
+                return Custom.jsonRes(status=400,message='Unsuported file type')
             
             # Once vector embedding is created remove file from local
             os.remove(filepath)
         
-        return Custom.jsonRes('Files successfully processed',200)
+        return Custom.jsonRes(status=200,message='Files successfully processed')

@@ -9,7 +9,6 @@ function handleFileUpload() {
             alert('Please select a file first.');
             return;
         }
-        // const file = files[0];
         const formData = new FormData();
         for (var i = 0; i < files.length; i++) {
             var file = files[i];
@@ -70,8 +69,9 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.json())
         .then(data => {
-            if (data && data.message && data.message.result) {
-                addMessageToChat('server-response', data.message.result);
+            if (data && data.message) {
+                addMessageToChat('server-response', data.message);
+
             } else {
                 addMessageToChat('server-response', 'No results found or invalid response format.');
             }
