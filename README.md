@@ -9,7 +9,7 @@
     
     For making AQINA I’ve used the embeddings approach to retrieve information from documents using LLM. The documents are processed through a model that creates smaller chunks and generates embeddings of those chunks. These embeddings are stored in a vector database. When a user queries the LLM, the embeddings are retrieved from the vector store and used by the LLM to generate a response from the custom data.
     
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/6e3cf0a3-cf6f-4212-ac16-a2c6db97da0c/9c98d0d5-34e1-4dcd-bc36-cc573cb1e6ac/Untitled.png)
+    ![How embeddings work](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*bYy116KZAanbxXta4PCkjQ.png)
 
 - Tech Stack
     Front-end: HTML, CSS, JavaScript
