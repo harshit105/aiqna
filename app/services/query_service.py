@@ -27,7 +27,7 @@ def process_llm_response(llm_response):
 
 class QueryService:
     def runQuery(self, query):
-        llm = OpenAI(openai_api_key = OPENAI_API_KEY, temperature = 0, max_tokens=100)
+        llm = OpenAI(openai_api_key = OPENAI_API_KEY, temperature = 0, max_tokens=500)
         docsearch = Chroma(persist_directory=VECTOR_STORE, embedding_function=embeddings)
         qa = RetrievalQA.from_chain_type(llm=llm, 
                                  chain_type="stuff",
