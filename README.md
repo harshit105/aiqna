@@ -10,10 +10,11 @@ sequenceDiagram
 
     User->>System: Upload PDF/CSV/TXT
 
-    System->>System: File saved in memory
-    System->>System: Read file using Loaders
+    System->>System: Files saved in memory
+    System->>System: Read individual file using Loaders
     System->>System: Split text to chunks
-    System->>System: Check if documents exists
+    System->>Infrastructure: Check hash of document
+    Infrastructure->>System: Check if document already exists
     System->>System: If document exists, skip
     System->>System: If doesn't exist, create embedding
     System->>Infrastructure: Store embeddings in Vector store(Chromadb)
