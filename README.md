@@ -12,10 +12,10 @@
     ![How embeddings work](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*bYy116KZAanbxXta4PCkjQ.png)
 
 - Tech Stack
-    Front-end: HTML, CSS, JavaScript
-    Back-end: Flask, Python
-    Database: ChromaDB to store vector embeddings
-    Framework: Langchain
+    - Front-end: HTML, CSS, JavaScript
+    - Back-end: Flask, Python
+    - Database: ChromaDB to store vector embeddings
+    - Framework: Langchain
 
 ## UML
 ```mermaid
