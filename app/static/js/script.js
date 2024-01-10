@@ -53,13 +53,16 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Please enter a query.');
             return;
         }
-
         addMessageToChat('user-message', query);
-
-        // Prepare the request body
         const requestBody = JSON.stringify({ query: query });
 
-        // Send POST request to your server
+        var serverMessage = document.createElement('div');
+        serverMessage.classList.add('chat-message', 'server-response', 'learning-from-file');
+        serverMessage.textContent = "Let me think!";
+        document.getElementById('chatContent').appendChild(serverMessage);
+        var chatContent = document.getElementById('chatContent');
+        chatContent.scrollTop = chatContent.scrollHeight;
+
         fetch('/run-query', {
             method: 'POST',
             headers: {
@@ -70,8 +73,13 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(data => {
             if (data && data.message) {
-                addMessageToChat('server-response', data.message);
-
+                console.log(data)
+                serverMessage.textContent = data.message;
+                const sources = data.sources
+                for (const [source, pages] of Object.entries(sources)) {
+                    const sourceDiv = createSourceDiv(source, pages);
+                    serverMessage.appendChild(sourceDiv);
+                }
             } else {
                 addMessageToChat('server-response', 'No results found or invalid response format.');
             }
@@ -79,6 +87,9 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => {
             console.error('Error:', error);
             addMessageToChat('server-response', 'Error fetching results.');
+        })
+        .finally(()=>{
+            serverMessage.classList.remove('learning-from-file');
         });
 
         chatInput.value = '';
@@ -92,3 +103,18 @@ document.addEventListener('DOMContentLoaded', function() {
         chatContent.scrollTop = chatContent.scrollHeight; // Scroll to the bottom
     }
 });
+
+
+// Function to create a div for each source
+function createSourceDiv(source, pages) {
+    const div = document.createElement('div');
+    div.className = 'source-info';
+    let content;
+    if(pages){
+        content = `<i>${source}: P. ${pages}</i>`
+    }else{
+        content = `<i>${source}</i>`
+    }
+    div.innerHTML = content;
+    return div;
+}
