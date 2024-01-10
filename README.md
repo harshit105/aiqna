@@ -13,9 +13,9 @@ sequenceDiagram
     System->>System: File saved in memory
     System->>System: Read file using Loaders
     System->>System: Split text to chunks
-    System->>System: Check if embeddings file exists
-    System->>System: If file exists, ignore
-    System->>System: If file doesn't exist, generate embeddings
+    System->>System: Check if documents exists
+    System->>System: If document exists, skip
+    System->>System: If doesn't exist, create embedding
     System->>Infrastructure: Store embeddings in Vector store(Chromadb)
     System->>User: Return success
 
