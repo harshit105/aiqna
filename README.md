@@ -13,6 +13,7 @@ sequenceDiagram
     System->>System: Files saved in memory
     System->>System: Read individual file using Loaders
     System->>System: Split text to chunks
+    System->>System: Create hash of document
     System->>Infrastructure: Check hash of document
     Infrastructure->>System: Check if document already exists
     System->>System: If document exists, skip
