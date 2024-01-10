@@ -90,56 +90,11 @@ main {
 #search-button:hover {
     background-color: #555;
 }
-
-#results {
-    /* Style your search results here */
-}
-
 footer {
     text-align: center;
     padding: 10px 0;
     background-color: #333;
     color: #fff;
-}
-
-#spinner {
-    border: 4px solid rgba(0, 0, 0, 0.1);
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border-left-color: #09f;
-    animation: spin 1s ease infinite;
-    display: none; /* Initially hidden */
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-#spinner.done::before {
-    content: '✓';
-    color: green;
-    font-size: 24px;
-    display: block;
-    text-align: center;
-    line-height: 36px; /* Same as the spinner's height */
-    border: none; /* Remove spinner borders */
-    animation: none; /* Stop spinning */
-}
-#spinner.failed::before {
-    content: '✕'; /* Unicode for a cross */
-    color: red;
-    font-size: 24px;
-    display: block;
-    text-align: center;
-    line-height: 36px; /* Same as the spinner's height */
-    border: none; /* Remove spinner borders */
-    animation: none; /* Stop spinning */
-}
-#spinner.done, #spinner.failed {
-    animation: none; /* Stop the spinning animation */
-    border: none; /* Remove the border to display only the tick or cross */
 }
 
 .chat-window {
