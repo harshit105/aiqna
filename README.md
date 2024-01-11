@@ -35,6 +35,7 @@ sequenceDiagram
     System->>System: If document exists, skip
     System->>System: If doesn't exist, create embedding
     System->>Infrastructure: Store embeddings in Vector store(Chromadb)
+    System->>System: Remove file from memory
     System->>User: Return success
 
     User->>System: Ask Question
